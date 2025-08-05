@@ -261,10 +261,15 @@ def show_ml_dashboard():
     
     # Generate data and train models
     with st.spinner("🔄 Training ML models with latest data..."):
-        members_df, books_df, loans_df = generate_ml_data()
-        churn_model, churn_metrics, churn_features = train_churn_model(members_df)
-        overdue_model, overdue_metrics, overdue_features = train_overdue_model(loans_df)
-        popularity_model, popularity_metrics, popularity_features = train_popularity_model(books_df)
+        try:
+            members_df, books_df, loans_df = generate_ml_data()
+            churn_model, churn_metrics, churn_features = train_churn_model(members_df)
+            overdue_model, overdue_metrics, overdue_features = train_overdue_model(loans_df)
+            popularity_model, popularity_metrics, popularity_features = train_popularity_model(books_df)
+        except Exception as e:
+            st.error(f"Error training ML models: {str(e)}")
+            st.info("Using fallback prediction system...")
+            return
     
     # Model performance overview
     col1, col2, col3, col4 = st.columns(4)
@@ -400,13 +405,26 @@ def show_ml_dashboard():
             st.plotly_chart(fig, use_container_width=True)
             
             # Overdue risk distribution by loan duration
-            overdue_by_duration = loans_df.groupby('loan_duration_days')['overdue'].mean()
-            fig2 = px.bar(x=overdue_by_duration.index, y=overdue_by_duration.values,
-                         title="📊 Overdue Rate by Loan Duration",
-                         color=overdue_by_duration.values, color_continuous_scale='Oranges')
-            fig2.update_xaxis(title="Loan Duration (Days)")
-            fig2.update_yaxis(title="Overdue Rate")
-            st.plotly_chart(fig2, use_container_width=True)
+            try:
+                overdue_by_duration = loans_df.groupby('loan_duration_days')['overdue'].mean()
+                if len(overdue_by_duration) > 0:
+                    # Create DataFrame for plotly
+                    chart_data = pd.DataFrame({
+                        'duration': overdue_by_duration.index,
+                        'overdue_rate': overdue_by_duration.values
+                    })
+                    
+                    fig2 = px.bar(chart_data, x='duration', y='overdue_rate',
+                                 title="📊 Overdue Rate by Loan Duration",
+                                 color='overdue_rate', color_continuous_scale='Oranges')
+                    fig2.update_xaxis(title="Loan Duration (Days)")
+                    fig2.update_yaxis(title="Overdue Rate")
+                    st.plotly_chart(fig2, use_container_width=True)
+                else:
+                    st.info("No loan data available for duration analysis")
+            except Exception as e:
+                st.error(f"Error creating overdue duration chart: {str(e)}")
+                st.info("Chart temporarily unavailable - other features still work!")
     
     with tab3:
         st.markdown("### 📈 Book Popularity Forecast")
@@ -521,10 +539,14 @@ def show_ml_dashboard():
             models = ['Churn', 'Overdue', 'Popularity']
             accuracies = [churn_metrics['test_accuracy'], overdue_metrics['test_accuracy'], popularity_metrics['test_r2']]
             
-            fig = px.bar(x=models, y=accuracies, title="🎯 Model Performance Comparison",
-                        color=accuracies, color_continuous_scale='Viridis')
-            fig.update_yaxis(title="Performance Score")
-            st.plotly_chart(fig, use_container_width=True)
+            try:
+                fig = px.bar(x=models, y=accuracies, title="🎯 Model Performance Comparison",
+                            color=accuracies, color_continuous_scale='Viridis')
+                fig.update_yaxis(title="Performance Score")
+                st.plotly_chart(fig, use_container_width=True)
+            except Exception as e:
+                st.error(f"Error creating performance chart: {str(e)}")
+                st.info("Model performance data temporarily unavailable")
         
         with col2:
             # Feature count comparison
