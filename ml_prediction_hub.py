@@ -294,13 +294,13 @@ def show_ml_dashboard():
         
         with col1:
             st.markdown("#### 🔧 Input Member Data")
-            books_last_month = st.slider("Books borrowed last month", 0, 20, 3)
-            days_since_visit = st.slider("Days since last visit", 0, 90, 7)
-            avg_rating = st.slider("Average rating given", 1.0, 5.0, 4.2, 0.1)
-            membership_months = st.slider("Membership duration (months)", 1, 60, 12)
-            overdue_count = st.slider("Previous overdue count", 0, 10, 1)
-            digital_engagement = st.slider("Digital engagement score", 0.0, 1.0, 0.5, 0.1)
-            genre_diversity = st.slider("Genre diversity (1-8)", 1, 8, 4)
+            books_last_month = st.slider("Books borrowed last month", 0, 20, 3, key="churn_books_last_month")
+            days_since_visit = st.slider("Days since last visit", 0, 90, 7, key="churn_days_since_visit")
+            avg_rating = st.slider("Average rating given", 1.0, 5.0, 4.2, 0.1, key="churn_avg_rating")
+            membership_months = st.slider("Membership duration (months)", 1, 60, 12, key="churn_membership_months")
+            overdue_count = st.slider("Previous overdue count", 0, 10, 1, key="churn_overdue_count")
+            digital_engagement = st.slider("Digital engagement score", 0.0, 1.0, 0.5, 0.1, key="churn_digital_engagement")
+            genre_diversity = st.slider("Genre diversity (1-8)", 1, 8, 4, key="churn_genre_diversity")
             
             # Make prediction
             if st.button("🔮 Predict Churn Risk", key="churn_predict"):
@@ -353,14 +353,14 @@ def show_ml_dashboard():
         
         with col1:
             st.markdown("#### 🔧 Input Loan Data")
-            member_age = st.slider("Member age", 18, 80, 35)
-            loan_duration = st.selectbox("Loan duration", [7, 14, 21, 30], index=1)
-            book_popularity = st.slider("Book popularity score", 0, 100, 50)
-            history_overdue = st.slider("Previous overdue count", 0, 10, 1)
-            book_length = st.slider("Book length (pages)", 50, 800, 300)
-            season_factor = st.slider("Seasonal factor", 0.5, 1.5, 1.0, 0.1)
-            engagement_score = st.slider("Member engagement score", 0, 100, 70)
-            distance = st.slider("Distance from library (km)", 0.5, 50.0, 5.0, 0.5)
+            member_age = st.slider("Member age", 18, 80, 35, key="overdue_member_age")
+            loan_duration = st.selectbox("Loan duration", [7, 14, 21, 30], index=1, key="overdue_loan_duration")
+            book_popularity = st.slider("Book popularity score", 0, 100, 50, key="overdue_book_popularity")
+            history_overdue = st.slider("Previous overdue count", 0, 10, 1, key="overdue_history_overdue")
+            book_length = st.slider("Book length (pages)", 50, 800, 300, key="overdue_book_length")
+            season_factor = st.slider("Seasonal factor", 0.5, 1.5, 1.0, 0.1, key="overdue_season_factor")
+            engagement_score = st.slider("Member engagement score", 0, 100, 70, key="overdue_engagement_score")
+            distance = st.slider("Distance from library (km)", 0.5, 50.0, 5.0, 0.5, key="overdue_distance")
             
             # Make prediction
             if st.button("🔮 Predict Overdue Risk", key="overdue_predict"):
@@ -415,14 +415,14 @@ def show_ml_dashboard():
         
         with col1:
             st.markdown("#### 🔧 Input Book Data")
-            pub_year = st.slider("Publication year", 1990, 2024, 2020)
-            page_count = st.slider("Page count", 50, 1000, 300)
-            author_pop = st.slider("Author popularity", 0, 100, 50)
-            genre_pop = st.slider("Genre popularity", 0, 100, 60)
-            review_count = st.slider("Number of reviews", 0, 200, 25)
-            avg_rating = st.slider("Average rating", 1.0, 5.0, 4.0, 0.1)
-            price = st.slider("Price ($)", 5, 100, 20)
-            marketing = st.slider("Marketing spend ($)", 0, 1000, 100)
+            pub_year = st.slider("Publication year", 1990, 2024, 2020, key="popularity_pub_year")
+            page_count = st.slider("Page count", 50, 1000, 300, key="popularity_page_count")
+            author_pop = st.slider("Author popularity", 0, 100, 50, key="popularity_author_pop")
+            genre_pop = st.slider("Genre popularity", 0, 100, 60, key="popularity_genre_pop")
+            review_count = st.slider("Number of reviews", 0, 200, 25, key="popularity_review_count")
+            avg_rating = st.slider("Average rating", 1.0, 5.0, 4.0, 0.1, key="popularity_avg_rating")
+            price = st.slider("Price ($)", 5, 100, 20, key="popularity_price")
+            marketing = st.slider("Marketing spend ($)", 0, 1000, 100, key="popularity_marketing")
             
             # Make prediction
             if st.button("🔮 Predict Popularity", key="popularity_predict"):
