@@ -417,8 +417,11 @@ def show_ml_dashboard():
                     fig2 = px.bar(chart_data, x='duration', y='overdue_rate',
                                  title="📊 Overdue Rate by Loan Duration",
                                  color='overdue_rate', color_continuous_scale='Oranges')
-                    fig2.update_xaxis(title="Loan Duration (Days)")
-                    fig2.update_yaxis(title="Overdue Rate")
+                    fig2.update_layout(
+                        xaxis_title="Loan Duration (Days)",
+                        yaxis_title="Overdue Rate",
+                        height=400
+                    )
                     st.plotly_chart(fig2, use_container_width=True)
                 else:
                     st.info("No loan data available for duration analysis")
@@ -540,9 +543,19 @@ def show_ml_dashboard():
             accuracies = [churn_metrics['test_accuracy'], overdue_metrics['test_accuracy'], popularity_metrics['test_r2']]
             
             try:
-                fig = px.bar(x=models, y=accuracies, title="🎯 Model Performance Comparison",
-                            color=accuracies, color_continuous_scale='Viridis')
-                fig.update_yaxis(title="Performance Score")
+                # Create DataFrame for plotly
+                performance_data = pd.DataFrame({
+                    'models': models,
+                    'accuracies': accuracies
+                })
+                fig = px.bar(performance_data, x='models', y='accuracies', 
+                            title="🎯 Model Performance Comparison",
+                            color='accuracies', color_continuous_scale='Viridis')
+                fig.update_layout(
+                    yaxis_title="Performance Score",
+                    xaxis_title="ML Models",
+                    height=400
+                )
                 st.plotly_chart(fig, use_container_width=True)
             except Exception as e:
                 st.error(f"Error creating performance chart: {str(e)}")
