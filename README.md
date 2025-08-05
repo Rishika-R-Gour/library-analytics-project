@@ -3,9 +3,11 @@
 A comprehensive library management and analytics system with role-based dashboards, data visualizations, and cloud deployment.
 
 ## 🌐 **Live Demo**
-🔗 **[View Live Dashboard](https://your-streamlit-url.streamlit.app)** ← *Replace with your actual Streamlit Cloud URL*
+🔗 **[Library Analytics Dashboard](https://a4sbmlac2wrrnjlahpyaqv.streamlit.app/)** - Role-based dashboards with interactive analytics
 
-> **🎯 Complete System**: Features role-based dashboards (Admin, Librarian, Member) with interactive analytics, book management, and real-time visualizations.
+🤖 **[ML Prediction Hub](https://mlpredictionapppy-97ovakrjjxaenevmrrjp89.streamlit.app/)** - Advanced machine learning predictions & analytics
+
+> **🎯 Complete System**: Features role-based dashboards (Admin, Librarian, Member) with interactive analytics, book management, real-time visualizations, and AI-powered predictions.
 
 ## ✨ **Key Features**
 

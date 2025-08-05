@@ -2,35 +2,38 @@
 
 ## 📝 **Resume/CV Entry**
 
-### Library Analytics Dashboard
+### Library Analytics Dashboard & ML Prediction Hub
 **Duration:** [Month Year] - [Month Year]  
-**Live Demo:** https://your-app.streamlit.app  
+**Live Demo:** https://a4sbmlac2wrrnjlahpyaqv.streamlit.app/  
+**ML Hub:** https://mlpredictionapppy-97ovakrjjxaenevmrrjp89.streamlit.app/  
 **GitHub:** https://github.com/Rishika-R-Gour/library-analytics-project
 
 **Description:**
-Developed a comprehensive library management system with role-based dashboards and interactive data visualizations. Deployed to cloud with optimized performance and mobile-responsive design.
+Developed a comprehensive library management ecosystem with role-based dashboards, interactive data visualizations, and AI-powered predictions. Deployed dual applications to cloud with optimized performance and mobile-responsive design.
 
 **Key Achievements:**
 • Built 4 distinct user interfaces (Admin, Librarian, Member, Demo) with role-specific functionality
+• Created advanced ML prediction system with 3 trained models (churn, overdue, popularity)
 • Implemented interactive data visualizations using Plotly and advanced analytics
 • Deployed to Streamlit Cloud with 98% uptime and sub-2-second load times
 • Optimized dependencies from 120+ packages to 13 essential packages for cloud compatibility
 • Created comprehensive documentation and deployment guides
 
-**Technologies:** Python, Streamlit, Plotly, Pandas, NumPy, Git, GitHub, Cloud Deployment
+**Technologies:** Python, Streamlit, Plotly, Pandas, NumPy, Scikit-learn, Machine Learning, Git, GitHub, Cloud Deployment
 
 ---
 
 ## 💼 **LinkedIn Project Post**
 
-🚀 Excited to share my latest project: Library Analytics Dashboard!
+🚀 Excited to share my latest project: Library Analytics Ecosystem with AI Predictions!
 
-Just deployed a comprehensive library management system with role-based dashboards and real-time analytics. 
+Just deployed a comprehensive library management system with role-based dashboards, real-time analytics, and machine learning predictions.
 
 ✨ **What makes it special:**
 • 4 unique user experiences (Admin, Librarian, Member, Demo)
+• Advanced ML prediction system with 3 trained models
 • Interactive visualizations with Plotly
-• Cloud-optimized deployment on Streamlit
+• Dual cloud deployment on Streamlit
 • Mobile-responsive design
 • Complete GitHub documentation
 
@@ -39,11 +42,13 @@ Just deployed a comprehensive library management system with role-based dashboar
 🔹 Librarian: Daily operations, performance tracking, collection management  
 🔹 Member: Personal reading analytics, book discovery, achievements
 🔹 Demo: Full system exploration with sample data
+🤖 AI Hub: Churn prediction, overdue risk analysis, popularity forecasting
 
 🛠️ **Tech Stack:**
-Python | Streamlit | Plotly | Pandas | Git | Cloud Deployment
+Python | Streamlit | Plotly | Pandas | Scikit-learn | Machine Learning | Git | Cloud Deployment
 
-🔗 **Live Demo:** [Your URL]
+🔗 **Live Demo:** https://a4sbmlac2wrrnjlahpyaqv.streamlit.app/
+🤖 **ML Predictions:** https://mlpredictionapppy-97ovakrjjxaenevmrrjp89.streamlit.app/
 💻 **Source Code:** https://github.com/Rishika-R-Gour/library-analytics-project
 
 What started as a simple idea became a full-featured application showcasing data visualization, cloud deployment, and user experience design. Excited to continue building and learning! 🌟
@@ -54,13 +59,15 @@ What started as a simple idea became a full-featured application showcasing data
 
 ## 🌐 **Portfolio Website Section**
 
-### Library Analytics Dashboard
+### Library Analytics Ecosystem with AI Predictions
 
-**[Live Demo](your-url) | [View Code](github-url)**
+**[Dashboard Demo](https://a4sbmlac2wrrnjlahpyaqv.streamlit.app/) | [ML Hub Demo](https://mlpredictionapppy-97ovakrjjxaenevmrrjp89.streamlit.app/) | [View Code](https://github.com/Rishika-R-Gour/library-analytics-project)**
 
-A sophisticated library management platform featuring role-based dashboards, interactive analytics, and cloud deployment.
+A sophisticated library management ecosystem featuring role-based dashboards, interactive analytics, and AI-powered predictions with cloud deployment.
 
 #### 🎯 **Project Highlights**
+- **Multi-Application System**: Built 2 connected applications with distinct purposes
+- **AI/ML Integration**: Developed 3 machine learning models for predictive analytics
 - **Multi-Role System**: Designed 4 distinct user experiences with role-specific functionality
 - **Data Visualization**: Created interactive charts and real-time analytics using Plotly
 - **Cloud Deployment**: Successfully deployed to Streamlit Cloud with performance optimization
@@ -68,16 +75,24 @@ A sophisticated library management platform featuring role-based dashboards, int
 
 #### 🛠️ **Technical Details**
 - **Frontend**: Streamlit with custom CSS and responsive design
+- **Machine Learning**: Scikit-learn with Random Forest and Gradient Boosting models
 - **Data Processing**: Pandas and NumPy for data manipulation and analysis
 - **Visualizations**: Plotly for interactive charts and advanced graphics
 - **Deployment**: Streamlit Cloud with optimized dependency management
 - **Version Control**: Git and GitHub with comprehensive documentation
 
-#### 📊 **Features by Role**
+#### 📊 **Features by Application**
+**Dashboard Features:**
 - **Admin Portal**: Executive dashboard, system metrics, user administration
 - **Librarian Tools**: Daily operations, collection management, performance tracking
 - **Member Experience**: Personal library, book discovery, reading analytics
 - **Demo Mode**: Full system exploration with sample data
+
+**ML Prediction Hub:**
+- **Churn Prediction**: Member retention analysis with 85%+ accuracy
+- **Overdue Risk Analysis**: Loan default prediction and risk assessment
+- **Popularity Forecast**: Book demand prediction for inventory management
+- **Model Performance**: Real-time monitoring and batch processing capabilities
 
 #### 🎨 **Design Decisions**
 - Implemented role-based conditional rendering for personalized experiences
@@ -95,19 +110,21 @@ Dear [Hiring Manager/Recruiter Name],
 
 I hope this email finds you well. I'm writing to share a recent project that demonstrates my data science and web development capabilities.
 
-**Project:** Library Analytics Dashboard
-**Live Demo:** [Your URL]
+**Project:** Library Analytics Ecosystem with ML Predictions
+**Dashboard Demo:** https://a4sbmlac2wrrnjlahpyaqv.streamlit.app/
+**ML Hub Demo:** https://mlpredictionapppy-97ovakrjjxaenevmrrjp89.streamlit.app/
 **Source Code:** https://github.com/Rishika-R-Gour/library-analytics-project
 
 This project showcases several key skills relevant to [Company Name]:
 
+✅ **Machine Learning**: Built 3 ML models with 85%+ accuracy for business predictions
 ✅ **Data Visualization**: Interactive charts and analytics using Plotly
 ✅ **Full-Stack Development**: End-to-end application development with Streamlit
 ✅ **Cloud Deployment**: Production deployment with performance optimization
 ✅ **User Experience**: Role-based interfaces with responsive design
 ✅ **Problem Solving**: Debugging deployment issues and optimizing for cloud environments
 
-The application features 4 distinct user roles (Admin, Librarian, Member, Demo), each with tailored dashboards and functionality. I'm particularly proud of the cloud optimization work - reducing dependencies from 120+ packages to 13 essential ones for faster deployment.
+The ecosystem features 2 connected applications: a role-based dashboard system (Admin, Librarian, Member, Demo) and an AI prediction hub with churn analysis, overdue risk assessment, and popularity forecasting. I'm particularly proud of the machine learning integration and cloud optimization work.
 
 I'd love to discuss how my technical skills and project experience align with opportunities at [Company Name]. I'm available for a conversation at your convenience.
 
