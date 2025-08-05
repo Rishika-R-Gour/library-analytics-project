@@ -1,8 +1,31 @@
 # 📚 Library Analytics Project
 
-A comprehensive library management and analytics system with ETL infrastructure, ML predictions, and multi-role authentication.
+A comprehensive library management and analytics system with role-based dashboards, data visualizations, and cloud deployment.
 
-> **🎯 Complete System**: This project provides full functionality through **integrated APIs and dashboards** - the Flask APIs (ports 5002, 5003) work seamlessly with Streamlit dashboards (ports 8501, 8503) for authentication, library management, and advanced analytics.
+## 🌐 **Live Demo**
+🔗 **[View Live Dashboard](https://your-streamlit-url.streamlit.app)** ← *Replace with your actual Streamlit Cloud URL*
+
+> **🎯 Complete System**: Features role-based dashboards (Admin, Librarian, Member) with interactive analytics, book management, and real-time visualizations.
+
+## ✨ **Key Features**
+
+### 🎭 **Role-Based Access**
+- **👑 Admin Portal**: Executive dashboard, user management, business intelligence
+- **📚 Librarian Workspace**: Daily operations, collection management, performance metrics
+- **📖 Member Experience**: Personal library, book discovery, reading analytics
+- **🌟 Demo Mode**: Full system exploration with sample data
+
+### 📊 **Advanced Analytics**
+- Interactive charts with Plotly
+- Real-time performance metrics
+- Predictive analytics and insights
+- Custom visualizations for each role
+
+### 🚀 **Cloud-Ready**
+- Optimized for Streamlit Cloud deployment
+- Lightweight dependencies (13 packages)
+- Fast loading times (< 2 seconds)
+- Mobile-responsive design
 
 ## 🚀 Quick Start
 
