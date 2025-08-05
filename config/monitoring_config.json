@@ -1,0 +1,17 @@
+{
+  "quality_thresholds": {
+    "completeness": 0.95,
+    "accuracy": 0.98,
+    "consistency": 0.95,
+    "validity": 0.99,
+    "uniqueness": 0.98
+  },
+  "alert_settings": {
+    "email_notifications": false,
+    "retention_days": 30
+  },
+  "dashboard_settings": {
+    "refresh_interval": 300,
+    "default_time_range": 24
+  }
+}

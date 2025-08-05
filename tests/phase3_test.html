@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 3: Advanced API Test Suite</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .container { max-width: 1400px; margin: 0 auto; background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; backdrop-filter: blur(10px); }
+        h1 { text-align: center; font-size: 2.5rem; margin-bottom: 2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .feature-badge { background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; margin: 5px; display: inline-block; }
+        .role-section { margin: 30px 0; padding: 20px; border-radius: 10px; }
+        .admin-section { background: rgba(220, 53, 69, 0.3); border-left: 5px solid #dc3545; }
+        .librarian-section { background: rgba(40, 167, 69, 0.3); border-left: 5px solid #28a745; }
+        .member-section { background: rgba(0, 123, 255, 0.3); border-left: 5px solid #007bff; }
+        .endpoint { margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 8px; }
+        .url { font-family: monospace; background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 5px; margin: 8px 0; }
+        .test-btn { background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px; transition: all 0.3s; }
+        .test-btn:hover { background: #218838; transform: translateY(-2px); }
+        .login-btn { background: #007bff; }
+        .login-btn:hover { background: #0056b3; }
+        .register-btn { background: #6f42c1; }
+        .register-btn:hover { background: #5a32a3; }
+        .result { margin-top: 15px; padding: 15px; background: rgba(0,0,0,0.3); border-radius: 8px; font-family: monospace; white-space: pre-wrap; max-height: 300px; overflow-y: auto; }
+        .success { border-left: 4px solid #28a745; }
+        .error { border-left: 4px solid #dc3545; }
+        .token-info { background: rgba(255, 193, 7, 0.3); border: 2px solid #ffc107; padding: 15px; border-radius: 10px; margin: 15px 0; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Phase 3: Advanced Library Analytics API</h1>
+        
+        <div style="text-align: center; margin-bottom: 30px;">
+            <span class="feature-badge">Multi-Role Auth</span>
+            <span class="feature-badge">Advanced Analytics</span>
+            <span class="feature-badge">User Management</span>
+            <span class="feature-badge">Activity Logging</span>
+            <span class="feature-badge">Permission System</span>
+        </div>
+
+        <div id="apiStatus" style="text-align: center; padding: 20px;">
+            <p>Checking Advanced API status...</p>
+        </div>
+
+        <div class="token-info" id="tokenInfo" style="display:none;">
+            <strong>🔑 Current Session:</strong><br>
+            <strong>User:</strong> <span id="currentUser">None</span><br>
+            <strong>Role:</strong> <span id="currentRole">None</span><br>
+            <strong>Token:</strong> <span id="tokenValue">Not logged in</span>
+        </div>
+
+        <!-- Authentication Section -->
+        <div class="role-section admin-section">
+            <h2>🔐 Authentication & Registration</h2>
+            
+            <div class="grid">
+                <div class="endpoint">
+                    <h3>👑 Admin Login</h3>
+                    <div class="url">POST /api/auth/login</div>
+                    <button class="test-btn login-btn" onclick="loginAs('admin', 'admin123')">Login as Admin</button>
+                    <div id="result-admin-login" class="result" style="display:none;"></div>
+                </div>
+
+                <div class="endpoint">
+                    <h3>📚 Librarian Login</h3>
+                    <div class="url">POST /api/auth/login</div>
+                    <button class="test-btn login-btn" onclick="loginAs('librarian', 'librarian123')">Login as Librarian</button>
+                    <div id="result-librarian-login" class="result" style="display:none;"></div>
+                </div>
+
+                <div class="endpoint">
+                    <h3>👤 Member Login</h3>
+                    <div class="url">POST /api/auth/login</div>
+                    <button class="test-btn login-btn" onclick="loginAs('member', 'member123')">Login as Member</button>
+                    <div id="result-member-login" class="result" style="display:none;"></div>
+                </div>
+
+                <div class="endpoint">
+                    <h3>📝 User Registration</h3>
+                    <div class="url">POST /api/auth/register</div>
+                    <button class="test-btn register-btn" onclick="testRegistration()">Test Registration</button>
+                    <div id="result-register" class="result" style="display:none;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Section -->
+        <div class="role-section admin-section">
+            <h2>👑 Administrator Features</h2>
+            <p><strong>Permissions:</strong> Full system access</p>
+            
+            <div class="grid">
+                <div class="endpoint">
+                    <h3>👥 User Management</h3>
+                    <div class="url">GET /api/users</div>
+                    <button class="test-btn" onclick="testEndpoint('/users', 'GET', 'admin-users', true)">Get All Users</button>
+                    <div id="result-admin-users" class="result" style="display:none;"></div>
+                </div>
+
+                <div class="endpoint">
+                    <h3>📊 Advanced Analytics</h3>
+                    <div class="url">GET /api/analytics/dashboard</div>
+                    <button class="test-btn" onclick="testEndpoint('/analytics/dashboard', 'GET', 'admin-analytics', true)">Get Admin Dashboard</button>
+                    <div id="result-admin-analytics" class="result" style="display:none;"></div>
+                </div>
+
+                <div class="endpoint">
+                    <h3>🔍 Activity Logs</h3>
+                    <div class="url">GET /api/analytics/user-activity</div>
+                    <button class="test-btn" onclick="testEndpoint('/analytics/user-activity?limit=10', 'GET', 'admin-activity', true)">View User Activity</button>
+                    <div id="result-admin-activity" class="result" style="display:none;"></div>
+                </div>
+
+                <div class="endpoint">
+                    <h3>⚙️ System Status</h3>
+                    <div class="url">GET /api/health</div>
+                    <button class="test-btn" onclick="testEndpoint('/health', 'GET', 'admin-health', false)">Check System Health</button>
+                    <div id="result-admin-health" class="result" style="display:none;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Librarian Section -->
+        <div class="role-section librarian-section">
+            <h2>📚 Librarian Features</h2>
+            <p><strong>Permissions:</strong> Library operations, reports, book management</p>
+            
+            <div class="grid">
+                <div class="endpoint">
+                    <h3>📊 Librarian Dashboard</h3>
+                    <div class="url">GET /api/analytics/dashboard</div>
+                    <button class="test-btn" onclick="testEndpoint('/analytics/dashboard', 'GET', 'librarian-dash', true)">Get Librarian Dashboard</button>
+                    <div id="result-librarian-dash" class="result" style="display:none;"></div>
+                </div>
+
+                <div class="endpoint">
+                    <h3>🔍 Activity Monitoring</h3>
+                    <div class="url">GET /api/analytics/user-activity</div>
+                    <button class="test-btn" onclick="testEndpoint('/analytics/user-activity?limit=5', 'GET', 'librarian-activity', true)">View Recent Activity</button>
+                    <div id="result-librarian-activity" class="result" style="display:none;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Member Section -->
+        <div class="role-section member-section">
+            <h2>👤 Member Features</h2>
+            <p><strong>Permissions:</strong> Personal data, book browsing, recommendations</p>
+            
+            <div class="grid">
+                <div class="endpoint">
+                    <h3>📊 Member Dashboard</h3>
+                    <div class="url">GET /api/analytics/dashboard</div>
+                    <button class="test-btn" onclick="testEndpoint('/analytics/dashboard', 'GET', 'member-dash', true)">Get Member Dashboard</button>
+                    <div id="result-member-dash" class="result" style="display:none;"></div>
+                </div>
+
+                <div class="endpoint">
+                    <h3>🚫 Permission Test</h3>
+                    <div class="url">GET /api/users (Should Fail)</div>
+                    <button class="test-btn" onclick="testEndpoint('/users', 'GET', 'member-fail', true)">Test Restricted Access</button>
+                    <div id="result-member-fail" class="result" style="display:none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let authToken = null;
+        let currentUser = null;
+
+        // Check API status on page load
+        window.onload = function() {
+            fetch('http://localhost:5002/api/health')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('apiStatus').innerHTML = 
+                        `<p style="color: #28a745; font-size: 1.2rem;">✅ Advanced API v${data.version} is running!</p>
+                         <p>Features: ${data.features.join(', ')}</p>`;
+                })
+                .catch(error => {
+                    document.getElementById('apiStatus').innerHTML = 
+                        '<p style="color: #dc3545;">❌ Advanced API is not responding. Make sure the server is running on port 5002.</p>';
+                });
+        };
+
+        function loginAs(username, password) {
+            const resultId = `result-${username}-login`;
+            const resultDiv = document.getElementById(resultId);
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = 'Authenticating...';
+            resultDiv.className = 'result';
+            
+            fetch('http://localhost:5002/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: username, password: password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.token) {
+                    authToken = data.token;
+                    currentUser = data.user;
+                    resultDiv.innerHTML = `✅ Login successful as ${data.user.role}!\\n${JSON.stringify(data.user, null, 2)}`;
+                    resultDiv.className = 'result success';
+                    
+                    // Update token info
+                    document.getElementById('tokenInfo').style.display = 'block';
+                    document.getElementById('currentUser').textContent = data.user.username;
+                    document.getElementById('currentRole').textContent = data.user.role;
+                    document.getElementById('tokenValue').textContent = authToken.substring(0, 50) + '...';
+                } else {
+                    resultDiv.innerHTML = '❌ Login failed: ' + (data.error || 'Unknown error');
+                    resultDiv.className = 'result error';
+                }
+            })
+            .catch(error => {
+                resultDiv.innerHTML = '❌ Login error: ' + error.message;
+                resultDiv.className = 'result error';
+            });
+        }
+
+        function testRegistration() {
+            const resultDiv = document.getElementById('result-register');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = 'Registering test user...';
+            resultDiv.className = 'result';
+            
+            const testUser = {
+                username: 'testuser_' + Date.now(),
+                email: 'test_' + Date.now() + '@example.com',
+                password: 'testpass123',
+                first_name: 'Test',
+                last_name: 'User'
+            };
+            
+            fetch('http://localhost:5002/api/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(testUser)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    resultDiv.innerHTML = `✅ Registration successful!\\nUser ID: ${data.user_id}\\nTest User: ${testUser.username}`;
+                    resultDiv.className = 'result success';
+                } else {
+                    resultDiv.innerHTML = '❌ Registration failed: ' + (data.error || 'Unknown error');
+                    resultDiv.className = 'result error';
+                }
+            })
+            .catch(error => {
+                resultDiv.innerHTML = '❌ Registration error: ' + error.message;
+                resultDiv.className = 'result error';
+            });
+        }
+
+        function testEndpoint(endpoint, method, resultKey, requireAuth = false) {
+            const resultDiv = document.getElementById('result-' + resultKey);
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = 'Loading...';
+            resultDiv.className = 'result';
+            
+            if (requireAuth && !authToken) {
+                resultDiv.innerHTML = '❌ Authentication required. Please login first.';
+                resultDiv.className = 'result error';
+                return;
+            }
+            
+            const headers = { 'Content-Type': 'application/json' };
+            if (requireAuth) {
+                headers['Authorization'] = 'Bearer ' + authToken;
+            }
+            
+            fetch('http://localhost:5002/api' + endpoint, {
+                method: method,
+                headers: headers
+            })
+            .then(response => response.json())
+            .then(data => {
+                resultDiv.innerHTML = JSON.stringify(data, null, 2);
+                if (data.error) {
+                    resultDiv.className = 'result error';
+                } else {
+                    resultDiv.className = 'result success';
+                }
+            })
+            .catch(error => {
+                resultDiv.innerHTML = '❌ Error: ' + error.message;
+                resultDiv.className = 'result error';
+            });
+        }
+    </script>
+</body>
+</html>

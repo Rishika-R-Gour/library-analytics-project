@@ -1,0 +1,54 @@
+{
+  "experiment_name": "Deep Learning Book Recommendations",
+  "researcher": "ML Research Team",
+  "start_date": "2025-07-28",
+  "status": "in_progress",
+  "objective": "Improve recommendation accuracy using neural networks",
+  "hypothesis": "Deep learning can capture complex user-item interactions better than current hybrid model",
+  "models_tested": [
+    {
+      "name": "Neural Collaborative Filtering",
+      "algorithm": "Deep Neural Network",
+      "accuracy": 0.823,
+      "training_time": "45 minutes",
+      "inference_time": "15ms",
+      "status": "promising"
+    },
+    {
+      "name": "Transformer-based Recommendations",
+      "algorithm": "Attention Mechanism",
+      "accuracy": 0.791,
+      "training_time": "2.5 hours",
+      "inference_time": "32ms",
+      "status": "too_slow"
+    },
+    {
+      "name": "Variational Autoencoder",
+      "algorithm": "VAE",
+      "accuracy": 0.735,
+      "training_time": "1 hour",
+      "inference_time": "8ms",
+      "status": "underperforming"
+    }
+  ],
+  "current_production_baseline": {
+    "algorithm": "Hybrid CF + Content",
+    "accuracy": 0.742,
+    "inference_time": "12ms"
+  },
+  "findings": [
+    "Neural CF shows 11% improvement over current model",
+    "Transformer approach too computationally expensive for real-time use",
+    "Need to balance accuracy gains with inference speed"
+  ],
+  "next_steps": [
+    "Optimize Neural CF architecture for production",
+    "A/B test with current hybrid model",
+    "Evaluate computational costs in production environment"
+  ],
+  "resources_used": {
+    "compute_hours": 156,
+    "training_data_size": "500K interactions",
+    "validation_data_size": "50K interactions"
+  }
+}

@@ -1,0 +1,6 @@
+isbn,title,author,genre,publication_year,price,publisher,pages,language
+978-0123456789,Data Science Basics,John Smith,Technology,2020,29.99,Tech Books,300,English
+978-0987654321,Machine Learning Guide,Jane Doe,technology,2021,45.50,ML Press,450,English
+978-0555666777,Python Programming,,TECHNOLOGY,2019,,Python House,250,English
+,Database Systems,Bob Johnson,Computer Science,1995,89.95,CS Publishers,800,English
+978-0123456789,Data Science Basics,John Smith,Technology,2020,29.99,Tech Books,300,English

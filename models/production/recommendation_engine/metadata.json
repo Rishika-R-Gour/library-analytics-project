@@ -1,0 +1,42 @@
+{
+  "model_name": "Book Recommendation Engine",
+  "version": "1.0.0",
+  "algorithm": "Hybrid (Collaborative Filtering + Content-Based)",
+  "created_date": "2025-08-02",
+  "model_file": "recommendation_model.pkl",
+  "performance_metrics": {
+    "accuracy": 0.742,
+    "precision": 0.691,
+    "recall": 0.798,
+    "f1_score": 0.741,
+    "engagement_lift": 0.30
+  },
+  "features": [
+    "genre_preferences",
+    "author_affinity_scores",
+    "reading_history_similarity",
+    "seasonal_trends",
+    "popularity_index"
+  ],
+  "training_data": {
+    "total_interactions": 50000,
+    "unique_members": 1000,
+    "unique_books": 600,
+    "data_period": "2022-01-01 to 2024-12-31"
+  },
+  "business_impact": {
+    "engagement_increase": "30%",
+    "circulation_boost": "22%",
+    "member_satisfaction": "4.7/5.0"
+  },
+  "deployment": {
+    "endpoint": "/recommend/books",
+    "response_time": "<200ms",
+    "throughput": "500 recommendations/hour"
+  },
+  "monitoring": {
+    "recommendation_diversity": 0.75,
+    "click_through_rate": 0.28,
+    "retrain_frequency": "weekly"
+  }
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Analytics API Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h1 { color: #333; text-align: center; }
+        .endpoint { margin: 20px 0; padding: 15px; border-left: 4px solid #007bff; background: #f8f9fa; }
+        .endpoint h3 { margin-top: 0; color: #007bff; }
+        .url { font-family: monospace; background: #e9ecef; padding: 5px 10px; border-radius: 4px; }
+        .test-btn { background: #28a745; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-left: 10px; }
+        .test-btn:hover { background: #218838; }
+        .result { margin-top: 10px; padding: 10px; background: #d1ecf1; border-radius: 4px; border-left: 4px solid #bee5eb; font-family: monospace; white-space: pre-wrap; }
+        .status { text-align: center; padding: 20px; }
+        .healthy { color: #28a745; font-weight: bold; }
+        .error { color: #dc3545; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Library Analytics API</h1>
+        
+        <div class="status" id="apiStatus">
+            <p>Checking API status...</p>
+        </div>
+
+        <div class="endpoint">
+            <h3>📊 Root Endpoint</h3>
+            <p>Welcome message and basic status</p>
+            <div class="url">GET http://localhost:8000/</div>
+            <button class="test-btn" onclick="testEndpoint('/')">Test</button>
+            <div id="result-root" class="result" style="display:none;"></div>
+        </div>
+
+        <div class="endpoint">
+            <h3>💚 Health Check</h3>
+            <p>API health status with database connection test</p>
+            <div class="url">GET http://localhost:8000/health</div>
+            <button class="test-btn" onclick="testEndpoint('/health')">Test</button>
+            <div id="result-health" class="result" style="display:none;"></div>
+        </div>
+
+        <div class="endpoint">
+            <h3>📈 Statistics</h3>
+            <p>Library statistics including loans, members, and items</p>
+            <div class="url">GET http://localhost:8000/stats</div>
+            <button class="test-btn" onclick="testEndpoint('/stats')">Test</button>
+            <div id="result-stats" class="result" style="display:none;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Check API status on page load
+        window.onload = function() {
+            fetch('http://localhost:8000/')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('apiStatus').innerHTML = 
+                        '<p class="healthy">✅ API is running and healthy!</p>';
+                })
+                .catch(error => {
+                    document.getElementById('apiStatus').innerHTML = 
+                        '<p class="error">❌ API is not responding. Make sure the server is running.</p>';
+                });
+        };
+
+        function testEndpoint(endpoint) {
+            const resultId = 'result-' + endpoint.replace('/', 'root');
+            const resultDiv = document.getElementById(resultId);
+            
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = 'Loading...';
+            
+            fetch('http://localhost:8000' + endpoint)
+                .then(response => response.json())
+                .then(data => {
+                    resultDiv.innerHTML = JSON.stringify(data, null, 2);
+                })
+                .catch(error => {
+                    resultDiv.innerHTML = 'Error: ' + error.message;
+                    resultDiv.style.borderLeftColor = '#dc3545';
+                    resultDiv.style.backgroundColor = '#f8d7da';
+                });
+        }
+    </script>
+</body>
+</html>

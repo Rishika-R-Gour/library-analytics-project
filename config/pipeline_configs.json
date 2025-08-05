@@ -1,0 +1,70 @@
+{
+  "library_data_processing": {
+    "name": "library_data_processing",
+    "description": "Daily library data processing and quality assurance",
+    "config": {
+      "stop_on_error": false,
+      "max_retries": 3
+    },
+    "extractors": [
+      {
+        "name": "books_csv_extractor",
+        "type": "CSVExtractor",
+        "source": "data/raw/books_import.csv",
+        "config": {
+          "encoding": "utf-8",
+          "header": true
+        }
+      }
+    ],
+    "transformers": [
+      {
+        "name": "books_data_cleaner",
+        "type": "DataCleaner",
+        "config": {
+          "auto_clean": true,
+          "rules": [
+            {
+              "type": "remove_nulls",
+              "columns": [
+                "isbn",
+                "title"
+              ]
+            },
+            {
+              "type": "standardize_case",
+              "column": "genre"
+            },
+            {
+              "type": "remove_duplicates"
+            }
+          ]
+        }
+      }
+    ],
+    "loaders": [
+      {
+        "name": "books_csv_loader",
+        "type": "CSVLoader",
+        "destination": "data/processed/books_cleaned.csv",
+        "config": {
+          "create_backup": true
+        }
+      }
+    ],
+    "quality_checks": [
+      {
+        "name": "isbn_uniqueness",
+        "type": "uniqueness",
+        "column": "isbn",
+        "threshold": 0.98
+      },
+      {
+        "name": "title_completeness",
+        "type": "completeness",
+        "column": "title",
+        "threshold": 0.95
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "model_name": "Member Churn Prediction Model",
+  "version": "1.1.0",
+  "algorithm": "XGBoost Classifier",
+  "created_date": "2025-08-01",
+  "staging_date": "2025-08-02",
+  "model_file": "churn_prediction_model_v1.1.0.pkl",
+  "status": "staging_validation",
+  "staging_tests": {
+    "unit_tests": "passed",
+    "integration_tests": "passed", 
+    "performance_tests": "in_progress",
+    "a_b_test": "scheduled",
+    "security_scan": "passed"
+  },
+  "performance_metrics": {
+    "accuracy": 0.847,
+    "precision": 0.823,
+    "recall": 0.876,
+    "f1_score": 0.849,
+    "auc": 0.912
+  },
+  "comparison_with_production": {
+    "current_production_version": "1.0.0",
+    "accuracy_improvement": 2.3,
+    "precision_improvement": 2.5,
+    "recall_improvement": 2.0,
+    "overall_improvement": "Significant"
+  },
+  "new_features_added": [
+    "library_event_attendance",
+    "digital_resource_usage", 
+    "social_engagement_score",
+    "recommendation_click_rate"
+  ],
+  "validation_plan": {
+    "shadow_mode_duration": "1 week",
+    "a_b_test_traffic": "10%",
+    "success_criteria": {
+      "accuracy_threshold": 0.84,
+      "response_time": "<120ms",
+      "no_degradation": "other_metrics"
+    }
+  },
+  "rollout_plan": {
+    "phase_1": "10% traffic for 3 days",
+    "phase_2": "25% traffic for 1 week", 
+    "phase_3": "50% traffic for 1 week",
+    "phase_4": "100% traffic (full deployment)"
+  },
+  "rollback_criteria": [
+    "Accuracy drops below 0.82",
+    "Response time exceeds 150ms",
+    "Error rate above 1%",
+    "Business metric degradation"
+  ]
+}

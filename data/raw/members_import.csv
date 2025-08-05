@@ -1,0 +1,6 @@
+member_id,name,email,phone,join_date,membership_type,address,age
+1,Alice Johnson,alice@email.com,(555) 123-4567,2020-01-15,Standard,123 Main St,25
+2,Bob Smith,bob.smith@library.org,555-987-6543,2020-02-20,Premium,456 Oak Ave,34
+3,,invalid-email,12345,2020-03-10,standard,789 Pine St,19
+4,Diana Prince,diana@books.com,(555) 111-2222,2019-12-05,Premium,,45
+5,Eve Wilson,,,(2021-01-01,Standard,321 Elm St,
