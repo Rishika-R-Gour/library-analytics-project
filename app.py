@@ -127,7 +127,10 @@ def generate_sample_data():
         "Dr. Sarah Johnson", "Prof. Michael Chen", "Dr. Emily Rodriguez",
         "James Wilson", "Dr. Lisa Park", "Robert Thompson",
         "Dr. Maria Garcia", "David Kim", "Dr. Jennifer Lee",
-        "Alex Brown", "Dr. Christopher Davis", "Rachel Green"
+        "Alex Brown", "Dr. Christopher Davis", "Rachel Green",
+        "Dr. Michael Smith", "Prof. Lisa Wang", "Dr. John Anderson",
+        "Maria Rodriguez", "David Brown", "Dr. Emily Chen",
+        "Prof. Sarah Davis", "Dr. Mark Wilson"
     ]
     
     genres = ['Technology', 'Business', 'Science', 'Psychology', 'History', 'Management']
@@ -135,7 +138,7 @@ def generate_sample_data():
     books = pd.DataFrame({
         'ID': range(1, 21),
         'Title': book_titles,
-        'Author': authors[:20],
+        'Author': authors,
         'Genre': np.random.choice(genres, 20),
         'Rating': np.round(np.random.uniform(3.5, 5.0, 20), 1),
         'Pages': np.random.randint(200, 800, 20),
